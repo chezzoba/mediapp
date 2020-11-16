@@ -1,0 +1,4 @@
+{
+    "jwtSecret": "secretoken",
+    "mongoURI": "mongodb+srv://kaizad:pass@mediadb.moipq.mongodb.net/mediadb?retryWrites=true&w=majority"
+}
