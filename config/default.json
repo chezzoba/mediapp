@@ -1,4 +1,6 @@
 {
     "jwtSecret": "secretoken",
-    "mongoURI": "mongodb+srv://kaizad:pass@mediadb.moipq.mongodb.net/mediadb?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://kaizad:pass@mediadb.moipq.mongodb.net/mediadb?retryWrites=true&w=majority",
+    "ghclid": "447864f08849b7067f66",
+    "ghclisecret": "029938d5845d2a8587ffdd78e7dc6455848b5f85"
 }
