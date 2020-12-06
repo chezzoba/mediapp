@@ -31,7 +31,7 @@ router.get('/me', auth, async (req, res) => {
 
 router.post('/', [auth, [
         check('status', 'Status is Required').not().isEmpty(),
-        check('skills', 'Skills is required').not().isEmpty()
+        check('skills', 'Skills is Required').not().isEmpty()
     ]],
     async (req, res) => {
         const errors = validationResult(req);
@@ -51,14 +51,12 @@ router.post('/', [auth, [
             // spread the rest of the fields we don't need to check
             ...rest
         } = req.body;
-
+        
         // build a profile
         const profileFields = {
             user: req.user.id,
             website: website && website !== '' ?
-                normalize(website, {
-                    forceHttps: true
-                }) : '',
+                website : '',
             skills: Array.isArray(skills) ?
                 skills : skills.split(',').map((skill) => ' ' + skill.trim()),
             ...rest
@@ -71,17 +69,13 @@ router.post('/', [auth, [
             facebook
         };
 
-        // normalize social fields to ensure valid url
-        for (const [key, value] of Object.entries(socialFields)) {
-            if (value && value.length > 0)
-                socialFields[key] = normalize(value, {
-                    forceHttps: true
-                });
-        }
-        // add to profileFields
-        profileFields.social = socialFields;
-
         try {
+            for (const [key, value] of Object.entries(socialFields)) {
+                if (value && value.length > 0) socialFields[key] = value
+            }
+            // add to profileFields
+            profileFields.social = socialFields;
+
             // Using upsert option (creates new doc if no match is found):
             let profile = await Profile.findOneAndUpdate({
                 user: req.user.id
