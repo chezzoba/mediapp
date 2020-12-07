@@ -488,6 +488,12 @@ button {
   margin-bottom: 0.5rem;
 }
 
+input:disabled {
+  color: gray;
+  border-color: gray;
+  
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {

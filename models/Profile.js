@@ -8,6 +8,10 @@ const ProfileSchema = new mongoose.Schema({
   company: {
     type: String
   },
+  __v: {
+    type: Number,
+    default: 0
+  },
   website: {
     type: String
   },
