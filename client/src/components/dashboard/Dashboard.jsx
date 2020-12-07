@@ -14,11 +14,11 @@ const Dashboard = ({
   auth: { user },
   profile: { profile, loading },
 }) => {
-  useEffect(getCurrentProfile, [profile]); // eslint-disable-line
+  useEffect(getCurrentProfile, []); // eslint-disable-line
 
   var content = '';
 
-  if (profile) {
+  if (profile && !loading) {
     content = (
       <Fragment>
         <DashForm />
@@ -26,7 +26,7 @@ const Dashboard = ({
         <ListEducation education={profile.education} />
       </Fragment>
     );
-  } else {
+  } else if (!loading) {
     content = (
         <Fragment>
           <p>You have not created a profile, please add some info</p>
@@ -37,7 +37,7 @@ const Dashboard = ({
       );
   }
 
-  return loading && profile === null ? (
+  return loading ? (
     <Spinner />
   ) : (
     <Fragment>
