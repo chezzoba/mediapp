@@ -99,7 +99,7 @@ router.delete('/:postid', auth, async (req, res) => {
     }
 });
 
-router.put('/likes/:id', auth, async (req, res) => {
+router.put('/like/:id', auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
 

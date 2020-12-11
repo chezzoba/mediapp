@@ -12,6 +12,7 @@ function Navbar({ auth: { isAuthenticated, loading }, logout}) {
       <i className="fas fa-user"></i>{' '}
       <span className="hide-sm">Dashboard</span>
       </Link></li>
+      <li><Link to="/posts">Posts</Link></li>
       <li><a href="#!" onClick={logout}>
         <i className="fas fa-sign-out-alt"></i>{' '}
         <span className="hide-sm">Sign Out</span>
